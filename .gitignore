@@ -1,0 +1,8 @@
+**/.idea/
+# Project exclude paths
+jdk-tool/target/
+quartz-task/target/
+spring-task/target/
+xxl-job-practice/target/
+.DS_Store
+*.iml

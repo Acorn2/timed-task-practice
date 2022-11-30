@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: quartz-task
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/quartz_test_db?serverTimezone=Hongkong&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  liquibase:
+    enabled: true
+    change-log: classpath:liquibase/master.xml
+    # 记录版本日志表
+    database-change-log-table: databasechangelog
+    # 记录版本改变lock表
+    database-change-log-lock-table: databasechangeloglock
+  quartz:
+    # 程序结束时会等待quartz相关的内容结束
+    wait-for-jobs-to-complete-on-shutdown: true
+    # 将任务等保存化到数据库
+    job-store-type: jdbc
+    # QuartzScheduler启动时覆盖己存在的Job
+    overwrite-existing-jobs: false
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    lazy-loading-enabled: true
+
+changeLogFile: src/main/resources/liquibase/master.xml
+

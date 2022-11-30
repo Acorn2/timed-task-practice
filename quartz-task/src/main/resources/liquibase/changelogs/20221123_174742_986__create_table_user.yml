@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20221123_174742_986__create_table_user
+      author: hresh
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: ${id}
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+              - column:
+                  name: password
+                  type: varchar(100)
+              - column:
+                  name: phone
+                  type: varchar(50)
+              - column:
+                  name: created_date
+                  type: ${time}
+              - column:
+                  name: last_modified_date
+                  type: ${time}
